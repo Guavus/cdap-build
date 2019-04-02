@@ -43,7 +43,7 @@ pipeline {
 		cd .. && \
 		mvn clean install -DskipTests -Dcheckstyle.skip=true -B -am -pl cdap/cdap-api -P templates
 		"""
-		    if (env.BRANCH_NAME == 'release/guavus_') {
+		    if (env.BRANCH_NAME == 'release/guavus_*') {
 		    sh"""   
 		    mvn clean deploy -DskipTests -Dcheckstyle.skip=true -B -am -f cdap/cdap-app-templates -P templates && \
 		    rm -rf ${env.WORKSPACE}/cdap/*/target/*.rpm  && \
