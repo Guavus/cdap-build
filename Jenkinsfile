@@ -46,19 +46,20 @@ pipeline {
 		rm -rf ${env.WORKSPACE}/cdap/*/target/*.rpm  && \
 		rm -rf ${env.WORKSPACE}/ansible_rpm/*.rpm
 		"""
-		    if (env.buildType != 'release') {
+		    if (env.buildType == 'release') {
+		    sh"""    
 		    mvn clean deploy -P examples,templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
 		-DskipTests \
 		-Dcheckstyle.skip=true \
 		-Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
-		-Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}
+		-Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}"""
 		 } 
 		    else {
-		    mvn clean install -P examples,templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
+		 sh"""mvn clean install -P examples,templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
 		-DskipTests \
 		-Dcheckstyle.skip=true \
 		-Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
-		-Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}
+		-Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}"""
 		    }
 		    
 	}}}
