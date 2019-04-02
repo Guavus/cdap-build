@@ -41,7 +41,7 @@ pipeline {
 		cd cdap && \
 		mvn clean install -DskipTests -Dcheckstyle.skip && \
 		cd .. && \
-		mvn clean install -DskipTests -Dcheckstyle.skip=true -B -am -pl cdap/cdap-api -P templates && \
+		mvn clean install -DskipTests -Dcheckstyle.skip=true -B -am -pl cdap/cdap-api -P templates
 		"""
 		    if (env.BRANCH_NAME == 'release/guavus_') {
 		    sh"""   
