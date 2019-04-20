@@ -69,7 +69,7 @@ pipeline {
 		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}"""
 		    }
 		sh"""
-		mvn org.owasp:dependency-check-maven:check -DskipSystemScope=true \
+		mvn org.owasp:dependency-check-maven:check -Ddownloader.quick.query.timestamp=false -DskipSystemScope=true \
         	-Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
 		"""
 	}}}
@@ -88,16 +88,8 @@ cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_MRDS, env.branchVersion, 'MRDS')
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_MMDS, env.branchVersion, 'MMDS')
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_AFE, env.branchVersion, 'AFE')
 cdap_sonar(env.SONAR_PATH_SECURITY_EXTN, env.branchVersion, 'SECURITY-EXTENSION')
-timeout(time: 2, unit: 'HOURS') {
-def qg = waitForQualityGate()
-if (qg.status != 'OK') {
-error "Pipeline aborted due to quality gate failure: ${qg.status}"
 }
 }
-}
-}
-
-
 }
 	stage("ZIP PUSH"){
 	  steps{
