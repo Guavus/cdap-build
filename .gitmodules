@@ -1,7 +1,7 @@
 [submodule "cdap"]
 	path = cdap
 	url = https://github.com/Guavus/cdap.git
-	branch = release/build_guavus_5.1.2_5.1.206
+	branch = dev/cdap-knox-test
 [submodule "app-artifacts/hydrator-plugins"]
 	path = app-artifacts/hydrator-plugins
 	url = https://github.com/Guavus/hydrator-plugins.git
