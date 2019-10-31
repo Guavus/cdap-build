@@ -1,11 +1,11 @@
 [submodule "cdap"]
 	path = cdap
 	url = https://github.com/Guavus/cdap.git
-	branch = release/build_guavus_5.1.2_5.1.2042
+	branch = dev/RAFS-105
 [submodule "app-artifacts/hydrator-plugins"]
 	path = app-artifacts/hydrator-plugins
 	url = https://github.com/Guavus/hydrator-plugins.git
-	branch = release/build_guavus_2.1_5.1.2042
+	branch = dev/RAFS-105
 [submodule "security-extensions/cdap-security-extn"]
 	path = security-extensions/cdap-security-extn
 	url = https://github.com/Guavus/cdap-security-extn.git
