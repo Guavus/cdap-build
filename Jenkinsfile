@@ -55,7 +55,7 @@ pipeline {
 		"""
 		    if (env.BRANCH_NAME ==~ 'release1/guavus_.*') {
 		    sh"""
-		    mvn clean install -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
+		    mvn clean deploy -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
 		    -Dmaven.test.skip=true \
 		    -Dcheckstyle.skip=true \
 		    -Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
@@ -63,7 +63,7 @@ pipeline {
 		    } 
 		    else {
 		    sh"""
-		    mvn clean install -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
+		    mvn clean deploy -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
 		    -Dmaven.test.skip=true \
 		    -Dcheckstyle.skip=true \
 		    -Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
