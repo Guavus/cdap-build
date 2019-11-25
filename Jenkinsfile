@@ -37,7 +37,7 @@ pipeline {
 		git submodule update --init --recursive --remote && \
 		export MAVEN_OPTS="-Xmx3056m -XX:MaxPermSize=128m" && \
 		cd cdap-ambari-service && \
-		./build.sh && \
+		RELEASE_PATH=http:\\\\/\\\\/artifacts.ggn.in.guavus.com:80\\\\/ggn-dev-rpms\\\\/cdap-build\\\\/$VERSION\\\\/$REL_ENV\\\\/ ./build.sh && \
 		cd .. && \
 		cd cdap && \
 		mvn clean install -Dmaven.test.skip=true -Dcheckstyle.skip && \
