@@ -21,7 +21,7 @@
 [submodule "cdap-ambari-service"]
 	path = cdap-ambari-service
 	url = https://github.com/Guavus/cdap-ambari-service.git
-  	branch = develop_guavus
+  	branch = dev/RAFD-1941
 [submodule "sentry"]
 	path = sentry
 	url = https://github.com/Guavus/sentry
