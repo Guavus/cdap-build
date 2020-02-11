@@ -30,9 +30,9 @@ pipeline {
 	    script {
 		sh"""
 		git clean -xfd  && \
-		git submodule foreach --recursive git clean -xfd && \
+		git submodule foreach --recursive "git clean -xfd" && \
 		git reset --hard  && \
-		git submodule foreach --recursive git reset --hard && \
+		git submodule foreach --recursive "git reset --hard" && \
 		git submodule update --remote && \
 		git submodule update --init --recursive --remote && \
 		export MAVEN_OPTS="-Xmx3056m -XX:MaxPermSize=128m" && \
@@ -43,6 +43,9 @@ pipeline {
 		cd .. && \
 		cd cdap-ambari-service && \
 		./build.sh && \
+                cd .. && \
+                cd twill && \
+                mvn clean install -DskipTests -Dcheckstyle.skip && \
 		cd .. && \
 		cd cdap && \
 		mvn clean install -DskipTests -Dcheckstyle.skip && \
@@ -78,9 +81,10 @@ cdap_sonar(Path, Name_of_Branch, Name_of_project)
 The Path be a path to the folder which contains the POM file for the project/module.
 */
 cdap_sonar(env.SONAR_PATH_CDAP, env.branchVersion, 'CDAP')
+/*
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_DRE, env.branchVersion, 'DRE')
+*/
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_HYDRATOR_PLUGINS, env.branchVersion, 'HYDRATOR-PLUGINS')
-cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_MMDS, env.branchVersion, 'MMDS')
 cdap_sonar(env.SONAR_PATH_SECURITY_EXTN, env.branchVersion, 'SECURITY-EXTENSION')
 /*timeout(time: 2, unit: 'HOURS') {
 def qg = waitForQualityGate()

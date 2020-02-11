@@ -1,0 +1,62 @@
+ambari_port: "8080"
+protocol_value: "http"
+node_cluster_name: "cluster-name"
+install_env: "dev"
+namespaces: ["cdap","dev_network"]
+config:
+  cdap-site:
+    data.tx.num.cores: 1
+    app.program.extra.classpath: '/opt/cdap/master/lib;/opt/cdap/master/artifacts/${app.program.spark.compat}'
+    master.services.scheduler.queue: ''
+    kafka.server.default.replication.factor: 2
+    app.program.jvm.opts: '${twill.jvm.gc.opts} -Dhdp.version=\${hdp.version} -Djava.security.krb5.conf=/etc/krb5.conf'
+    ui.theme.file: "ui/server/config/themes/jio.json"
+    hive.server2.jdbc.url: "jdbc:hive2://raf001-slv-01.cloud.in.guavus.com:2181,raf001-slv-02.cloud.in.guavus.com:2181,raf001-slv-03.cloud.in.guavus.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2"
+    security.auth.server.ssl.truststore.path: "/etc/cdap/truststore.jks"
+    security.auth.server.ssl.truststore.password: "changeit"
+    security.auth.server.ssl.truststore.type: "JKS"
+    app.program.spark.compat: "spark2_2.11"
+    program.container.dist.jars: "/etc/security/keytabs/cdap.headless.keytab"
+    security.enabled: "true"
+    ssl.external.enabled: "true"
+    router.ssl.bind.port: 10443
+    security.auth.server.ssl.bind.port: 10010
+    dashboard.ssl.bind.port: 9443
+    dashboard.ssl.disable.cert.check: "true"
+    security.authentication.handlerClassName: "co.cask.cdap.security.server.LDAPAuthenticationHandler"
+    security.authentication.loginmodule.className: "co.cask.cdap.security.server.LDAPLoginModule"
+    security.authentication.handler.debug: "false"
+    security.authentication.handler.hostname: "lab.openldap.com"
+    security.authentication.handler.port: 389
+    security.authentication.handler.userBaseDn: "ou=People,dc=lab,dc=openldap,dc=com"
+    security.authentication.handler.userRdnAttribute: "uid"
+    security.authentication.handler.userObjectClass: "posixAccount"
+    security.authentication.handler.userIdAttribute: "uid"
+    security.authentication.handler.roleBaseDn: "ou=Group,dc=lab,dc=openldap,dc=com"
+    security.authentication.handler.roleNameAttribute: "cn"
+    security.authentication.handler.roleMemberAttribute: "memberUid"
+    security.authentication.handler.roleObjectClass: "posixGroup"
+    security.authentication.handler.useLdaps: "false"
+    security.authentication.handler.ldapsVerifyCertificate: "true"
+    security.authorization.enabled: "true"
+    security.authorization.extension.jar.path: "/opt/cdap/master/ext/security/cdap-ranger-binding-0.1.4.jar"
+    security.authorization.extension.extra.classpath: "/usr/local/ranger-cdap-conf/"
+    kerberos.auth.enabled: "true"
+    cdap.master.kerberos.keytab: "/etc/security/keytabs/cdap.service.keytab"
+    cdap.master.kerberos.principal: "cdap/_HOST@GVS.GGN"
+    dev:
+      security.authentication.username.caseconversion: "lower"
+    prod:
+      security.authentication.username.caseconversion: "camelcase"
+      security.authentication.handler.usernameTitleCaseDelim: "."
+  cdap-security:
+    security.auth.server.ssl.keystore.path: "/etc/cdap/keystore.jks"
+    security.auth.server.ssl.keystore.password: "changeit"
+    security.auth.server.ssl.keystore.keypassword: "changeit"
+    security.auth.server.ssl.keystore.type: "JKS"
+    router.ssl.keystore.path: "/etc/cdap/keystore.jks"
+    router.ssl.keystore.password: "changeit"
+    router.ssl.keystore.keypassword: "changeit"
+    router.ssl.keystore.type: "JKS"
+    dashboard.ssl.cert: "/etc/cdap/cdap-ui-cert.pem"
+    dashboard.ssl.key: "/etc/cdap/cdap-ui-key.key"
