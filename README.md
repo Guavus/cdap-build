@@ -4,7 +4,7 @@ This repository is used for building a complete CDAP release.
 
 This checks out CDAP, Cask Tracker, CDAP Navigator, CDAP Security
 Extensions, and Cask Hydrator Plugins. The external application
-artifact repositories are located under `app-artifacts`, while
+artifact  repositories are located under `app-artifacts`, while
 security extensions are located under `security-extensions`, so
 CDAP should be built using
 `-Dadditional.artifacts.dir=$(pwd)/app-artifacts -Dsecurity.extensions.dir=$(pwd)/security-extensions`
