@@ -28,9 +28,9 @@
 	branch = aiq-master
 [submodule "app-artifacts/auto-feature-engineering"]
 	path = app-artifacts/auto-feature-engineering
-	url = https://github.com/Guavus/auto-feature-engineering.git
-        branch = release/build_guavus_5.1.203
+	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/auto-feature-engineering
+        branch = aiq-master
 [submodule "app-artifacts/cdap-mrds"]
 	path = app-artifacts/cdap-mrds
-	url = https://github.com/Guavus/cdap-mrds.git
-	branch = release/build_guavus_5.1.203
+	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/cdap-mrds
+	branch = aiq-master
