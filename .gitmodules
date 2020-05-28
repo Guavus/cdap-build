@@ -34,3 +34,7 @@
 	path = app-artifacts/cdap-mrds
 	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/cdap-mrds
 	branch = release/build_guavus_5.1.203_AIQ-2.0
+[submodule "twill"]
+	path = twill
+	url = https://github.com/ThalesGroup/twill.git
+        branch = 0.13.0_2.10
