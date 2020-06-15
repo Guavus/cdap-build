@@ -29,6 +29,16 @@ pipeline {
 	  steps {
 	    script {
 		sh"""
+		rm -rf common && \
+		git clone git@github.com:himanshu-gautam-guavus/common.git -b changes-for-guava28-patch-1 && \
+		cd common/common-http && \
+		mvn clean  install  -Dcheckstyle.skip -Dmaven.test.skip=true -Dmaven.javadoc.skip=true && \
+		cd ../.. && \
+		rm -rf twill && \
+		git clone git@github.com:ThalesGroup/twill.git -b branch-0.13.5 && \
+		cd twill && \
+		mvn clean  install  -Dcheckstyle.skip -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Drat.skip=true  -Drat.ignoreErrors=true && \
+		cd .. && \
 		git clean -xfd  && \
 		git submodule foreach --recursive "git clean -xfd" && \
 		git reset --hard  && \
