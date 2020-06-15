@@ -33,8 +33,16 @@ pipeline {
 		git submodule foreach --recursive "git clean -xfd" && \
 		git reset --hard  && \
 		git submodule foreach --recursive "git reset --hard" && \
-		git submodule update --remote && \
 		git submodule update --init --recursive --remote && \
+		cd app-artifacts/hydrator-plugins && \
+		rm -rf realtime-stream-source && \
+		git clone https://github.com/ThalesGroup/realtime-stream-source.git -b release/build_guavus_1.5_5.1.2171 && \
+		cd ../.. && \
+		cd app-artifacts/hydrator-plugins && \
+        rm -rf wrangler-transform && \
+		git clone https://github.com/ThalesGroup/wrangler.git wrangler-transform -b release/build_guavus_3.2_5.1.2171 && \
+		cd ../.. && \
+		git submodule update --init --remote -f --recursive && \
 		export MAVEN_OPTS="-Xmx3056m -XX:MaxPermSize=128m" && \
 		cd cdap-ambari-service && \
 		RELEASE_PATH=http:\\\\/\\\\/artifacts.ggn.in.guavus.com:80\\\\/ggn-dev-rpms\\\\/cdap-build\\\\/$VERSION\\\\/$REL_ENV\\\\/ ./build.sh && \
