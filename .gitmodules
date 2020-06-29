@@ -22,6 +22,14 @@
 	path = cdap-ambari-service
 	url = https://github.com/ThalesGroup/cdap-ambari-service.git
   	branch = develop_guavus 
+[submodule "app-artifacts/auto-feature-engineering"]
+	path = app-artifacts/auto-feature-engineering
+	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/auto-feature-engineering.git
+    branch = develop_guavus 
+[submodule "app-artifacts/cdap-mrds"]
+	path = app-artifacts/cdap-mrds
+	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/cdap-mrds.git
+	branch = develop_guavus
 [submodule "sentry"]
 	path = sentry
 	url = https://github.com/ThalesGroup/sentry
