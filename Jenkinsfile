@@ -29,7 +29,6 @@ pipeline {
 	  steps {
 	    script {
 		sh"""
-        git submodules sync \
 		git clean -xfd  && \
 		git submodule foreach --recursive "git clean -xfd" && \
 		git reset --hard  && \
