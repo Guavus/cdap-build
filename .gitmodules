@@ -26,14 +26,6 @@
 	path = sentry
 	url = https://github.com/ThalesGroup/sentry
 	branch = develop_guavus
-[submodule "app-artifacts/auto-feature-engineering"]
-	path = app-artifacts/auto-feature-engineering
-	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/auto-feature-engineering.git
-    branch = develop_guavus 
-[submodule "app-artifacts/cdap-mrds"]
-	path = app-artifacts/cdap-mrds
-	url = https://gitlab.thalesdigital.io/Guavus/raf/analytics/cdap-mrds.git
-	branch = develop_guavus
 [submodule "app-artifacts/auto-metadata-service"]
 	path = app-artifacts/auto-metadata-service
 	url = https://gitlab.thalesdigital.io/Guavus/raf/common/auto-metadata-service.git
