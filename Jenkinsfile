@@ -30,9 +30,9 @@ pipeline {
 	    script {
 		sh"""
 		git clean -xfd  && \
-		git submodule foreach --recursive git clean -xfd && \
+		git submodule foreach --recursive "git clean -xfd" && \
 		git reset --hard  && \
-		git submodule foreach --recursive git reset --hard && \
+		git submodule foreach --recursive "git reset --hard" && \
 		git submodule update --remote && \
 		git submodule update --init --recursive --remote && \
 		export MAVEN_OPTS="-Xmx3056m -XX:MaxPermSize=128m" && \
