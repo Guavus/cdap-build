@@ -1,7 +1,7 @@
 [submodule "cdap"]
 	path = cdap
 	url = https://github.com/ThalesGroup/cdap.git
-	branch = develop_guavus
+	branch = fix/RAF-1657-pipeline-proeprties-api
 [submodule "app-artifacts/hydrator-plugins"]
 	path = app-artifacts/hydrator-plugins
 	url = https://github.com/ThalesGroup/hydrator-plugins.git
