@@ -60,7 +60,7 @@ pipeline {
 		    -Dmaven.test.skip=true \
 		    -Dcheckstyle.skip=true \
 		    -Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
-		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE} -rf:cdap-ui"""
+		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE} -rf :cdap-ui"""
 		    } 
 		    else {
 		    sh"""
@@ -68,7 +68,7 @@ pipeline {
 		    -Dmaven.test.skip=true \
 		    -Dcheckstyle.skip=true \
 		    -Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
-		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE} -rf:cdap-ui"""
+		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE} -rf :cdap-ui"""
 		    }
 	}}}
 	  
