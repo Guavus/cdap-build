@@ -56,19 +56,19 @@ pipeline {
 		"""
 		    if (env.BRANCH_NAME ==~ 'release1/guavus_.*') {
 		    sh"""
-		    mvn clean deploy -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
+		    mvn clean install -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
 		    -Dmaven.test.skip=true \
 		    -Dcheckstyle.skip=true \
 		    -Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
-		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE} -rf :cdap-ui"""
+		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}"""
 		    } 
 		    else {
 		    sh"""
-		    mvn clean deploy -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
+		    mvn clean install -P templates,dist,release,rpm-prepare,rpm,deb-prepare,deb \
 		    -Dmaven.test.skip=true \
 		    -Dcheckstyle.skip=true \
 		    -Dadditional.artifacts.dir=${env.WORKSPACE}/app-artifacts \
-		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE} -rf :cdap-ui"""
+		    -Dsecurity.extensions.dir=${env.WORKSPACE}/security-extensions -DbuildNumber=${env.RELEASE}"""
 		    }
 	}}}
 	  
