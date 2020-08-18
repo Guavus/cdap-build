@@ -11,9 +11,7 @@ pipeline {
 	SONAR_PATH_CDAP = './cdap'
 	SONAR_PATH_APP_ARTIFACTS_DRE = './app-artifacts/dre'
 	SONAR_PATH_APP_ARTIFACTS_HYDRATOR_PLUGINS = './app-artifacts/hydrator-plugins'
-	SONAR_PATH_APP_ARTIFACTS_MRDS = './app-artifacts/cdap-mrds'
 	SONAR_PATH_APP_ARTIFACTS_MMDS = './app-artifacts/mmds'
-	SONAR_PATH_APP_ARTIFACTS_AFE = './app-artifacts/auto-feature-engineering'
 	SONAR_PATH_SECURITY_EXTN = './security-extensions/cdap-security-extn'  
 	}
   stages {
@@ -82,9 +80,7 @@ The Path be a path to the folder which contains the POM file for the project/mod
 cdap_sonar(env.SONAR_PATH_CDAP, env.branchVersion, 'CDAP')
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_DRE, env.branchVersion, 'DRE')
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_HYDRATOR_PLUGINS, env.branchVersion, 'HYDRATOR-PLUGINS')
-cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_MRDS, env.branchVersion, 'MRDS')
 cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_MMDS, env.branchVersion, 'MMDS')
-cdap_sonar(env.SONAR_PATH_APP_ARTIFACTS_AFE, env.branchVersion, 'AFE')
 cdap_sonar(env.SONAR_PATH_SECURITY_EXTN, env.branchVersion, 'SECURITY-EXTENSION')
 /*timeout(time: 2, unit: 'HOURS') {
 def qg = waitForQualityGate()
