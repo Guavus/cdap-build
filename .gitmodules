@@ -1,7 +1,7 @@
 [submodule "cdap"]
 	path = cdap
 	url = https://github.com/ThalesGroup/cdap.git
-	branch = release/build_guavus_5.1.2_5.1.218
+	branch = fix/meta-sync-credentials-issue
 [submodule "app-artifacts/hydrator-plugins"]
 	path = app-artifacts/hydrator-plugins
 	url = https://github.com/ThalesGroup/hydrator-plugins.git
